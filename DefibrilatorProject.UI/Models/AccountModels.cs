@@ -11,7 +11,7 @@ namespace DefibrilatorProject.UI.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("DefaultConnection")
+            : base("DefibrilatorProjectContext")
         {
         }
 

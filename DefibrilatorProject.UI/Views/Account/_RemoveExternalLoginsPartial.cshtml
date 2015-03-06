@@ -1,11 +1,11 @@
-﻿@model ICollection<DefibrilatorProject.UI.Models.ExternalLogin>
+﻿@model ICollection<DefibrilatorProject.Models.Models.ExternalLogin>
 
 @if (Model.Count > 0)
 {
     <h3>Registered external logins</h3>
     <table>
         <tbody>
-        @foreach (DefibrilatorProject.UI.Models.ExternalLogin externalLogin in Model)
+        @foreach (DefibrilatorProject.Models.Models.ExternalLogin externalLogin in Model)
         {
             <tr>
                 <td>@externalLogin.ProviderDisplayName</td>

@@ -5,11 +5,12 @@ using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using DefibrilatorProject.DataLayer.Context;
+using DefibrilatorProject.DataLayer.Filters;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using DefibrilatorProject.UI.Filters;
-using DefibrilatorProject.UI.Models;
+using DefibrilatorProject.Models.Models;
 
 namespace DefibrilatorProject.UI.Controllers
 {
@@ -263,7 +264,7 @@ namespace DefibrilatorProject.UI.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                using (DefibrilatorProjectContext db = new DefibrilatorProjectContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists

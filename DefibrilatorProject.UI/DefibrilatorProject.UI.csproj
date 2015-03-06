@@ -183,11 +183,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -309,6 +307,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DefibrilatorProject.DataLayer\DefibrilatorProject.DataLayer.csproj">
+      <Project>{2F564D54-FCA4-46FD-A00E-DA9178E3E808}</Project>
+      <Name>DefibrilatorProject.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DefibrilatorProject.Models\DefibrilatorProject.Models.csproj">
       <Project>{d4df0c1f-6cf5-49b8-a156-94e32b5fe94a}</Project>
       <Name>DefibrilatorProject.Models</Name>

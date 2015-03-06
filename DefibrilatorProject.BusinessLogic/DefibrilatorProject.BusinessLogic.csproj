@@ -39,7 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountManager\AccountManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DefibrilatorProject.DataLayer\DefibrilatorProject.DataLayer.csproj">
+      <Project>{2f564d54-fca4-46fd-a00e-da9178e3e808}</Project>
+      <Name>DefibrilatorProject.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DefibrilatorProject.Models\DefibrilatorProject.Models.csproj">
+      <Project>{d4df0c1f-6cf5-49b8-a156-94e32b5fe94a}</Project>
+      <Name>DefibrilatorProject.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

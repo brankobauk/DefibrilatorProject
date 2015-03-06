@@ -307,6 +307,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DefibrilatorProject.BusinessLogic\DefibrilatorProject.BusinessLogic.csproj">
+      <Project>{edef0d76-75f1-4625-97a3-c4dbad1e9f49}</Project>
+      <Name>DefibrilatorProject.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DefibrilatorProject.DataLayer\DefibrilatorProject.DataLayer.csproj">
       <Project>{2F564D54-FCA4-46FD-A00E-DA9178E3E808}</Project>
       <Name>DefibrilatorProject.DataLayer</Name>

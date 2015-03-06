@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DefibrilatorProject.DataLayer.Context;
-using DefibrilatorProject.DataLayer.Filters;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
@@ -15,7 +14,6 @@ using DefibrilatorProject.Models.Models;
 namespace DefibrilatorProject.UI.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //

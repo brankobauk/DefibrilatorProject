@@ -51,6 +51,7 @@
     <Compile Include="Context\DefibrilatorProjectContext.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Filters\InitializeDatabaseConnection.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs">
       <SubType>Code</SubType>
     </Compile>

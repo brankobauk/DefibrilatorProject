@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefibrilatorProject.UI", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefibrilatorProject.Models", "DefibrilatorProject.Models\DefibrilatorProject.Models.csproj", "{D4DF0C1F-6CF5-49B8-A156-94E32B5FE94A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefibrilatorProject.DataLayer", "DefibrilatorProject.DataLayer\DefibrilatorProject.DataLayer.csproj", "{2F564D54-FCA4-46FD-A00E-DA9178E3E808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefibrilatorProject.BusinessLogic", "DefibrilatorProject.BusinessLogic\DefibrilatorProject.BusinessLogic.csproj", "{EDEF0D76-75F1-4625-97A3-C4DBAD1E9F49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D4DF0C1F-6CF5-49B8-A156-94E32B5FE94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4DF0C1F-6CF5-49B8-A156-94E32B5FE94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4DF0C1F-6CF5-49B8-A156-94E32B5FE94A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F564D54-FCA4-46FD-A00E-DA9178E3E808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F564D54-FCA4-46FD-A00E-DA9178E3E808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F564D54-FCA4-46FD-A00E-DA9178E3E808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F564D54-FCA4-46FD-A00E-DA9178E3E808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDEF0D76-75F1-4625-97A3-C4DBAD1E9F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEF0D76-75F1-4625-97A3-C4DBAD1E9F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEF0D76-75F1-4625-97A3-C4DBAD1E9F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEF0D76-75F1-4625-97A3-C4DBAD1E9F49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

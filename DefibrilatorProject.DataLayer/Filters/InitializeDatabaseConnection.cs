@@ -19,9 +19,10 @@ namespace DefibrilatorProject.DataLayer.Filters
                 {
                     // Create the SimpleMembership database without Entity Framework migration schema
                     ((IObjectContextAdapter)_defibrilatorProjectContext).ObjectContext.CreateDatabase();
+                    WebSecurity.InitializeDatabaseConnection("DefibrilatorProjectContext", "UserProfiles", "UserId", "UserName", autoCreateTables: true);
                 }
                 
-                WebSecurity.InitializeDatabaseConnection("DefibrilatorProjectContext", "UserProfiles", "UserId", "UserName", autoCreateTables: true);
+                
             }
             catch (Exception ex)
             {

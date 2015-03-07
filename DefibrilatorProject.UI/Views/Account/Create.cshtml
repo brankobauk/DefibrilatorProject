@@ -21,24 +21,24 @@
             @Html.ValidationMessageFor(model => model.UserProfile.UserName)
         </div>
         <div class="editor-label">
-            @Html.LabelFor(model => model.UserData.FirstName)
+            @Html.LabelFor(model => model.UserProfile.FirstName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.UserData.FirstName)
-            @Html.ValidationMessageFor(model => model.UserData.FirstName)
+            @Html.EditorFor(model => model.UserProfile.FirstName)
+            @Html.ValidationMessageFor(model => model.UserProfile.FirstName)
         </div>
         <div class="editor-label">
-            @Html.LabelFor(model => model.UserData.LastName)
+            @Html.LabelFor(model => model.UserProfile.LastName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.UserData.LastName)
-            @Html.ValidationMessageFor(model => model.UserData.LastName)
+            @Html.EditorFor(model => model.UserProfile.LastName)
+            @Html.ValidationMessageFor(model => model.UserProfile.LastName)
         </div>
         <div class="editor-label">
-            @Html.LabelFor(model => model.UserData.Company)
+            @Html.LabelFor(model => model.UserProfile.Company)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(x => x.UserData.CompanyId, Model.Companies)
+            @Html.DropDownListFor(x => x.UserProfile.CompanyId, Model.Companies)
         </div>
 
         

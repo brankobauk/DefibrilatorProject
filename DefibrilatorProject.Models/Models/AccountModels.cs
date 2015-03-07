@@ -7,15 +7,14 @@ namespace DefibrilatorProject.Models.Models
     
     public class UserProfile
     {
-        public UserProfile()
-        {
-            UsersData = new List<UserData>();
-        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
-        private ICollection<UserData> UsersData { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int? CompanyId { get; set; }
+        public virtual Company Company { get; set; } 
     }
 
     public class RegisterExternalLoginModel

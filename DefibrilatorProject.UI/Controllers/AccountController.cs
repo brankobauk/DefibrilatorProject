@@ -5,6 +5,7 @@ using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using DefibrilatorProject.BusinessLogic.AccountManager;
 using DefibrilatorProject.DataLayer.Context;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
@@ -16,6 +17,35 @@ namespace DefibrilatorProject.UI.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly AccountManager _accountManager = new AccountManager();
+
+        public ActionResult Index()
+        {
+            
+            return View(_accountManager.GetUsers());
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        public ActionResult Details()
+        {
+            return View();
+        }
+
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+
         //
         // GET: /Account/Login
 
@@ -34,7 +64,8 @@ namespace DefibrilatorProject.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            var login = _accountManager.Login(model);
+            if (ModelState.IsValid && login)
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -51,8 +82,7 @@ namespace DefibrilatorProject.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            WebSecurity.Logout();
-
+            _accountManager.Logout();
             return RedirectToAction("Index", "Home");
         }
 
@@ -78,9 +108,8 @@ namespace DefibrilatorProject.UI.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    _accountManager.CreateUser(model);
+                    return RedirectToAction("Login", "Account");
                 }
                 catch (MembershipCreateUserException e)
                 {

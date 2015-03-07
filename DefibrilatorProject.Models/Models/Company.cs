@@ -10,11 +10,11 @@ namespace DefibrilatorProject.Models.Models
     {
         public Company()
         {
-            UsersData = new List<UserData>();
+            UserProfiles = new List<UserProfile>();
         }
         [Key]
         public int CompanyId { get; set; }
         public string Name { get; set; }
-        private ICollection<UserData> UsersData { get; set; }
+        private ICollection<UserProfile> UserProfiles { get; set; }
     }
 }

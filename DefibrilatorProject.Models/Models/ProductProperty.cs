@@ -11,7 +11,6 @@ namespace DefibrilatorProject.Models.Models
         [Key]
         public int ProductPropertyId { get; set; }
         public string Name { get; set; }
-        public int ServiceRate { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
     }

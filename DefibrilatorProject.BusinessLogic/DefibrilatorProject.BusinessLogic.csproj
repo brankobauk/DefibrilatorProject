@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountManager\AccountManager.cs" />
-    <Compile Include="CompanyManager\CompanyManager.cs" />
+    <Compile Include="CompanyManager\CompanyManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,10 @@ namespace DefibrilatorProject.DataLayer.Context
         public DbSet<Company> Company { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductProperty> ProductProperty { get; set; }
+        public DefibrilatorProjectContext()
+        {
+            Database.SetInitializer<DefibrilatorProjectContext>(null);
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DefibrilatorProjectContext, Configuration>());

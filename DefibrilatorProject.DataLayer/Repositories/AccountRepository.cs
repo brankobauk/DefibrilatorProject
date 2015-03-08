@@ -27,7 +27,8 @@ namespace DefibrilatorProject.DataLayer.Repositories
 
         public List<UserProfile> GetUsers()
         {
-            return _db.UserProfiles.Where(p => p.CompanyId == p.Company.CompanyId).Include(p => p.Company).ToList();
+            return _db.UserProfiles.ToList();
+                //Where(p => p.CompanyId == p.Company.CompanyId).Include(p => p.Company).ToList();
         }
     }
 }

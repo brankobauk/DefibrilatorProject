@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201503072300239_AddProp.Designer.cs">
       <DependentUpon>201503072300239_AddProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503081943235_InitialMigrations.cs" />
+    <Compile Include="Migrations\201503081943235_InitialMigrations.Designer.cs">
+      <DependentUpon>201503081943235_InitialMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,6 +87,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201503072300239_AddProp.resx">
       <DependentUpon>201503072300239_AddProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503081943235_InitialMigrations.resx">
+      <DependentUpon>201503081943235_InitialMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

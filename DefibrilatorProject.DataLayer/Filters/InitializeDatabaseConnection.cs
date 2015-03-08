@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using DefibrilatorProject.DataLayer.Context;
+using DefibrilatorProject.Models.Models;
 using WebMatrix.WebData;
 
 namespace DefibrilatorProject.DataLayer.Filters
@@ -9,6 +10,7 @@ namespace DefibrilatorProject.DataLayer.Filters
     public class InitializeDatabaseConnection
     {
         private readonly DefibrilatorProjectContext _defibrilatorProjectContext = new DefibrilatorProjectContext();
+
         public void SimpleMembershipInitializer()
         {
             Database.SetInitializer<DefibrilatorProjectContext>(null);
@@ -19,6 +21,7 @@ namespace DefibrilatorProject.DataLayer.Filters
                 {
                     // Create the SimpleMembership database without Entity Framework migration schema
                     ((IObjectContextAdapter)_defibrilatorProjectContext).ObjectContext.CreateDatabase();
+                    
                 }
                 
                 WebSecurity.InitializeDatabaseConnection("DefibrilatorProjectContext", "UserProfiles", "UserId", "UserName", autoCreateTables: true);

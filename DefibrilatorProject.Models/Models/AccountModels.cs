@@ -10,6 +10,7 @@ namespace DefibrilatorProject.Models.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -21,6 +22,7 @@ namespace DefibrilatorProject.Models.Models
     {
         [Required]
         [Display(Name = "User name")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
@@ -64,6 +66,7 @@ namespace DefibrilatorProject.Models.Models
     {
         [Required]
         [Display(Name = "User name")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string UserName { get; set; }
 
         [Required]

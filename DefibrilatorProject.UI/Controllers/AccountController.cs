@@ -26,39 +26,30 @@ namespace DefibrilatorProject.UI.Controllers
             return View(_accountManager.GetUsers());
         }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         public ActionResult Edit(int id)
         {
             return View(_accountManager.GetUser(id));
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, AccountViewModel accountViewModel)
+        public ActionResult Edit(int userId, AccountViewModel accountViewModel)
         {
             try
             {
-                _accountManager.EditUser(id, accountViewModel);
+                _accountManager.EditUser(userId, accountViewModel);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
-        
-        public ActionResult Details()
-        {
-            return View();
-        }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int userId)
         {
-            return View();
+            _accountManager.DeleteUser(userId);
+            return RedirectToAction("Index");
         }
 
 

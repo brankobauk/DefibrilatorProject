@@ -48,5 +48,12 @@ namespace DefibrilatorProject.DataLayer.Repositories
                 _db.SaveChanges();
             }
         }
+
+        public void DeleteUser(int userId)
+        {
+            var userToDelete = _db.UserProfiles.FirstOrDefault(p => p.UserId == userId);
+            _db.UserProfiles.Remove(userToDelete);
+            _db.SaveChanges();
+        }
     }
 }

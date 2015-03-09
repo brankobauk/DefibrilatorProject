@@ -52,5 +52,10 @@ namespace DefibrilatorProject.BusinessLogic.AccountManager
         {
             _accountRepository.EditUser(userId, accountViewModel);
         }
+
+        public void DeleteUser(int userId)
+        {
+            _accountRepository.DeleteUser(userId);
+        }
     }
 }

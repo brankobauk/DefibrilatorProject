@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using DefibrilatorProject.DataLayer.Context;
 using DefibrilatorProject.Models.Models;
+using DefibrilatorProject.Models.ViewModels;
 using WebMatrix.WebData;
 
 namespace DefibrilatorProject.DataLayer.Repositories
@@ -29,6 +30,23 @@ namespace DefibrilatorProject.DataLayer.Repositories
         {
             return _db.UserProfiles.ToList();
                 //Where(p => p.CompanyId == p.Company.CompanyId).Include(p => p.Company).ToList();
+        }
+
+        public UserProfile GetUser(int userId)
+        {
+            return _db.UserProfiles.FirstOrDefault(p => p.UserId == userId);
+        }
+
+        public void EditUser(int userId, AccountViewModel accountViewModel)
+        {
+            var userToEdit = GetUser(userId);
+            if (userToEdit != null)
+            {
+                userToEdit.FirstName = accountViewModel.UserProfile.FirstName;
+                userToEdit.LastName = accountViewModel.UserProfile.LastName;
+                userToEdit.CompanyId = accountViewModel.UserProfile.CompanyId;
+                _db.SaveChanges();
+            }
         }
     }
 }

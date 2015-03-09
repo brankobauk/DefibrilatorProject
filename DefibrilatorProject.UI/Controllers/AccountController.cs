@@ -11,6 +11,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using DefibrilatorProject.Models.Models;
+using DefibrilatorProject.Models.ViewModels;
 
 namespace DefibrilatorProject.UI.Controllers
 {
@@ -30,11 +31,26 @@ namespace DefibrilatorProject.UI.Controllers
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            return View(_accountManager.GetUser(id));
         }
 
+        [HttpPost]
+        public ActionResult Edit(int id, AccountViewModel accountViewModel)
+        {
+            try
+            {
+                _accountManager.EditUser(id, accountViewModel);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        
         public ActionResult Details()
         {
             return View();
@@ -109,7 +125,7 @@ namespace DefibrilatorProject.UI.Controllers
                 try
                 {
                     _accountManager.CreateUser(model);
-                    return RedirectToAction("Login", "Account");
+                    return RedirectToAction("Index", "Account");
                 }
                 catch (MembershipCreateUserException e)
                 {

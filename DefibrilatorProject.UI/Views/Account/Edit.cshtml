@@ -1,24 +1,23 @@
 ﻿@model DefibrilatorProject.Models.ViewModels.AccountViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>UserData</legend>
-
+        <legend>AccountViewModel</legend>
+        @Html.HiddenFor(model => model.UserProfile.UserId)
         <div class="editor-label">
             @Html.LabelFor(model => model.UserProfile.UserName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.UserProfile.UserName)
-            @Html.ValidationMessageFor(model => model.UserProfile.UserName)
+            @Html.TextBoxFor(model => model.UserProfile.UserName, new {disabled = "disabled", @readonly = "readonly"})
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.UserProfile.FirstName)
@@ -38,16 +37,12 @@
             @Html.LabelFor(model => model.UserProfile.Company)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(x => x.UserProfile.CompanyId, Model.Companies) 
+            @Html.DropDownListFor(x => x.UserProfile.CompanyId, Model.Companies)
         </div>
-
-        
-
-        
-
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save"/>
         </p>
+        
     </fieldset>
 }
 

@@ -1,0 +1,57 @@
+﻿@using DefibrilatorProject.Models.Models
+@model DefibrilatorProject.Models.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ProductViewModel</legend>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Model)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Model)
+                    </div>
+                </td>
+            </tr>
+            @{
+                Html.RenderPartial("_ProductPropertyRow", new ProductProperty());
+            }
+            <tr>
+                <td colspan="2">
+                    <p>
+                        <input type="submit" value="Create"/>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

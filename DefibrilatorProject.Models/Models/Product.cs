@@ -15,7 +15,7 @@ namespace DefibrilatorProject.Models.Models
         [Key]
         public int ProductId { get; set; }
         public string Name { get; set; }
-        public string SerialCode { get; set; }
-        private ICollection<ProductProperty> ProductProperty { get; set; }
+        public string Model { get; set; }
+        public  ICollection<ProductProperty> ProductProperty { get; set; }
     }
 }

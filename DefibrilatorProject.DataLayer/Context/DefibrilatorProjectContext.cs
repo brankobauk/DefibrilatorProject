@@ -6,10 +6,7 @@ namespace DefibrilatorProject.DataLayer.Context
 {
     public class DefibrilatorProjectContext : DbContext
     {
-        public DefibrilatorProjectContext()
-        {
-            Database.SetInitializer<DefibrilatorProjectContext>(null);
-        }
+        
 
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Company> Company { get; set; }

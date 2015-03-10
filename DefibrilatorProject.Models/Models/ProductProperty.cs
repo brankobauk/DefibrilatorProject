@@ -13,6 +13,7 @@ namespace DefibrilatorProject.Models.Models
         public string Name { get; set; }
         public int ServiceRate { get; set; }
         public int ProductId { get; set; }
+        public int TypeId { get; set; }
         public virtual Product Product { get; set; }
     }
 }

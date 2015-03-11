@@ -9,7 +9,7 @@ using DefibrilatorProject.DataLayer.Repositories;
 using DefibrilatorProject.Models.Models;
 using DefibrilatorProject.Models.ViewModels;
 
-namespace DefibrilatorProject.BusinessLogic.ProductManager
+namespace DefibrilatorProject.BusinessLogic.Products
 {
     public class ProductManager
     {

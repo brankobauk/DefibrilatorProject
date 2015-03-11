@@ -5,7 +5,7 @@ using DefibrilatorProject.Helpers.DropDownHelpers;
 using DefibrilatorProject.Models.Models;
 using DefibrilatorProject.Models.ViewModels;
 
-namespace DefibrilatorProject.BusinessLogic.AccountManager
+namespace DefibrilatorProject.BusinessLogic.Accounts
 {
     
     public class AccountManager

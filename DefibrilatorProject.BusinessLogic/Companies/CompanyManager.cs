@@ -2,7 +2,7 @@
 using DefibrilatorProject.DataLayer.Repositories;
 using DefibrilatorProject.Models.Models;
 
-namespace DefibrilatorProject.BusinessLogic.CompanyManager
+namespace DefibrilatorProject.BusinessLogic.Companies
 {
     public class CompanyManager
     {

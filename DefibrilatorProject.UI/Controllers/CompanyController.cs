@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DefibrilatorProject.BusinessLogic.CompanyManager;
-using DefibrilatorProject.DataLayer.Context;
+using DefibrilatorProject.BusinessLogic.Companies;
 using DefibrilatorProject.Models.Models;
 
 namespace DefibrilatorProject.UI.Controllers

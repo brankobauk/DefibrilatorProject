@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DefibrilatorProject.BusinessLogic.AccountManager;
+using DefibrilatorProject.BusinessLogic.Accounts;
 using Microsoft.Web.WebPages.OAuth;
 using DefibrilatorProject.Models.Models;
 

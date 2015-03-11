@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DefibrilatorProject.BusinessLogic.ProductManager;
+using DefibrilatorProject.BusinessLogic.Products;
 using DefibrilatorProject.Models.Models;
 using DefibrilatorProject.Models.ViewModels;
 

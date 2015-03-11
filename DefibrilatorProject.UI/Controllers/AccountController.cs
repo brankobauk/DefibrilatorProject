@@ -26,9 +26,9 @@ namespace DefibrilatorProject.UI.Controllers
             return View(_accountManager.GetUsers());
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int userId)
         {
-            return View(_accountManager.GetUser(id));
+            return View(_accountManager.GetUser(userId));
         }
 
         [HttpPost]

@@ -18,6 +18,7 @@ namespace DefibrilatorProject.DataLayer.Context
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<DefibrilatorProjectContext>(null);
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DefibrilatorProjectContext, Configuration>());
         }
 

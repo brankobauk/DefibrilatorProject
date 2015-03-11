@@ -31,8 +31,21 @@ namespace DefibrilatorProject.DataLayer.Repositories
             foreach (var productProperty in product.ProductProperty)
             {
                 var productPropertyToEdit = GetProductProperty(productProperty.ProductPropertyId);
-                productPropertyToEdit.Name = productProperty.Name;
-                productPropertyToEdit.ServiceRate = productProperty.ServiceRate;
+                if (productPropertyToEdit == null)
+                {
+                    var productPropertyToAdd = new ProductProperty()
+                    {
+                        Name = productProperty.Name,
+                        ServiceRate = productProperty.ServiceRate,
+                        ProductId = product.ProductId
+                    };
+                    AddProductProperty(productPropertyToAdd);
+                }
+                else 
+                { 
+                    productPropertyToEdit.Name = productProperty.Name;
+                    productPropertyToEdit.ServiceRate = productProperty.ServiceRate;
+                }
                 _db.SaveChanges();
             }
             

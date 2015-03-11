@@ -1,25 +1,28 @@
 ﻿
 @model DefibrilatorProject.Models.Models.ProductProperty
 
-@using(Html.BeginCollectionItem("ProductProperty"))
+@using (Html.BeginCollectionItem("ProductProperty"))
 {
-    <tr>
-        <td>
-            <div class="editor-label">
-                @Html.LabelFor(productProperty => productProperty.Name)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(productProperty => productProperty.Name)
-            </div>
-        </td>
-        <td>
-            <div class="editor-label">
-                @Html.LabelFor(productProperty => productProperty.ServiceRate)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(productProperty => productProperty.ServiceRate)
-            </div>
-        </td>
-    </tr>
- }
+    <table>
+        <tr>
+            <td>
+                @Html.HiddenFor(productProperty => productProperty.ProductPropertyId)
+                <div class="editor-label">
+                    <label for="PropertyName">Property Name</label>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(productProperty => productProperty.Name)
+                </div>
+            </td>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(productProperty => productProperty.ServiceRate)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(productProperty => productProperty.ServiceRate)
+                </div>
+            </td>
+        </tr>
+    </table>
+}
         

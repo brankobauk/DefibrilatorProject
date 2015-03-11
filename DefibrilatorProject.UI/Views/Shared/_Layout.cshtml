@@ -20,8 +20,12 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Company", "Index", "Company")</li>
-                            <li>@Html.ActionLink("Users", "Index", "Account")</li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink("Companies", "Index", "Company")</li>
+                                <li>@Html.ActionLink("Users", "Index", "Account")</li>
+                                <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                            }
                         </ul>
                     </nav>
                 </div>

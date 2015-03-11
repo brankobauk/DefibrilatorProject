@@ -20,12 +20,22 @@ namespace DefibrilatorProject.DataLayer.Repositories
             _db.SaveChanges();
         }
 
-        public void EditProduct(int id, Product product)
+        public void EditProduct(Product product)
         {
-            var productToEdit = _db.Product.FirstOrDefault(p => p.ProductId == id);
+            var productToEdit = _db.Product.FirstOrDefault(p => p.ProductId == product.ProductId);
             if (productToEdit == null) return;
             productToEdit.Name = product.Name;
+            productToEdit.Model = product.Model;
             _db.SaveChanges();
+
+            foreach (var productProperty in product.ProductProperty)
+            {
+                var productPropertyToEdit = GetProductProperty(productProperty.ProductPropertyId);
+                productPropertyToEdit.Name = productProperty.Name;
+                productPropertyToEdit.ServiceRate = productProperty.ServiceRate;
+                _db.SaveChanges();
+            }
+            
         }
 
         public void DeleteProduct(int id)
@@ -35,15 +45,25 @@ namespace DefibrilatorProject.DataLayer.Repositories
             _db.SaveChanges();
         }
 
-        public Product GetProduct(int id)
+        public Product GetProduct(int productId)
         {
-            return _db.Product.FirstOrDefault(p => p.ProductId == id);
+            return _db.Product.FirstOrDefault(p => p.ProductId == productId);
         }
 
         public void AddProductProperty(ProductProperty productProperty)
         {
             _db.ProductProperty.Add(productProperty);
             _db.SaveChanges();
+        }
+
+        public List<ProductProperty> GetProductPropertyByProductId(int productId)
+        {
+            return _db.ProductProperty.Where(p => p.ProductId == productId).ToList();
+        }
+
+        public ProductProperty GetProductProperty(int productPropertyId)
+        {
+            return _db.ProductProperty.FirstOrDefault(p => p.ProductPropertyId == productPropertyId);
         }
     }
 }

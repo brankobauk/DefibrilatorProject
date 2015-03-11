@@ -9,6 +9,7 @@ using DefibrilatorProject.Models.Models;
 
 namespace DefibrilatorProject.UI.Controllers
 {
+    [Authorize]
     public class CompanyController : Controller
     {
         private readonly CompanyManager _companyManager = new CompanyManager();

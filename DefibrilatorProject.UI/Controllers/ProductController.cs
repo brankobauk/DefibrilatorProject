@@ -9,6 +9,7 @@ using DefibrilatorProject.Models.ViewModels;
 
 namespace DefibrilatorProject.UI.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly ProductManager _productManager = new ProductManager();
@@ -48,26 +49,26 @@ namespace DefibrilatorProject.UI.Controllers
         //
         // GET: /Product/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int productId)
         {
-            return View();
+            var product = _productManager.GetProduct(productId);
+            return View(product);
         }
 
         //
         // POST: /Product/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Product product)
         {
             try
             {
-                // TODO: Add update logic here
-
+                _productManager.EditProduct(product);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
@@ -97,7 +98,7 @@ namespace DefibrilatorProject.UI.Controllers
             }
         }
         #region Partials
-        public PartialViewResult NewClientRow()
+        public PartialViewResult NewProperty()
         {
             return PartialView("_ProductPropertyRow", new ProductProperty());
         }

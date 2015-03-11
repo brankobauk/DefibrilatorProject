@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -24,9 +25,9 @@ namespace DefibrilatorProject.BusinessLogic.ProductManager
         }
 
 
-        public void EditCompany(int id, Product product)
+        public void EditProduct(Product product)
         {
-            _productRepository.EditProduct(id, product);
+            _productRepository.EditProduct(product);
         }
 
         public void DeleteProduct(int productId)
@@ -36,7 +37,14 @@ namespace DefibrilatorProject.BusinessLogic.ProductManager
 
         public Product GetProduct(int productId)
         {
-            return _productRepository.GetProduct(productId);
+            var productToGet = _productRepository.GetProduct(productId);
+            var product = new Product()
+            {
+                Name = productToGet.Name,
+                Model = productToGet.Model,
+                ProductProperty = _productRepository.GetProductPropertyByProductId(productId)
+            };
+            return product;
         }
 
         private List<ProductProperty> GetProductProperty(int productId, FormCollection collection)

@@ -86,6 +86,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\SoldProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DefibrilatorProject.Models\DefibrilatorProject.Models.csproj">

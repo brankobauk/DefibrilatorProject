@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DefibrilatorProject.BusinessLogic.Companies;
 using DefibrilatorProject.DataLayer.Filters;
 using DefibrilatorProject.DataLayer.Repositories;
 using DefibrilatorProject.Helpers.DropDownHelpers;
@@ -13,7 +14,7 @@ namespace DefibrilatorProject.BusinessLogic.Accounts
         private readonly InitializeDatabaseConnection _initializeDatabaseConnection = new InitializeDatabaseConnection();
         private readonly DropdownHelper _dropdownHelper = new DropdownHelper();
         private readonly AccountRepository _accountRepository = new AccountRepository();
-        private readonly CompanyRepository _companyRepository = new CompanyRepository();
+        private readonly CompanyManager _companyManager = new CompanyManager();
         public void InitializeSimpleMembership()
         {
             _initializeDatabaseConnection.SimpleMembershipInitializer();
@@ -44,7 +45,7 @@ namespace DefibrilatorProject.BusinessLogic.Accounts
             return new AccountViewModel()
             {
                 UserProfile = _accountRepository.GetUser(userId),
-                Companies = _dropdownHelper.GetCompanyListForDropDown(_companyRepository.GetCompanies())
+                Companies = _dropdownHelper.GetCompanyListForDropDown(_companyManager.GetCompanies())
             };
         }
 

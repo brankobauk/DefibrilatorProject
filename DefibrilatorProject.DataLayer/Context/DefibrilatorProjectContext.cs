@@ -15,6 +15,7 @@ namespace DefibrilatorProject.DataLayer.Context
         public DbSet<Company> Company { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductProperty> ProductProperty { get; set; }
+        public DbSet<SoldProduct> SoldProduct { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

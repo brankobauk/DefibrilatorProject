@@ -40,5 +40,25 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         {
             _soldProductRepository.AddSoldProduct(soldProduct);
         }
+
+        public SoldProductViewModel GetSoldProduct(int soldProductId)
+        {
+            return new SoldProductViewModel()
+            {
+                SoldProduct = _soldProductRepository.GetSoldProduct(soldProductId),
+                Products = _dropdownHelper.GetProductListForDropDown(_productManager.GetProducts()),
+                Companies = _dropdownHelper.GetCompanyListForDropDown(_companyManager.GetCompanies())
+            };
+        }
+
+        public void EditSoldProduct(SoldProduct soldProduct)
+        {
+            _soldProductRepository.EditSoldProduct(soldProduct);
+        }
+
+        public void Delete(int soldProductId)
+        {
+            _soldProductRepository.Delete(soldProductId);
+        }
     }
 }

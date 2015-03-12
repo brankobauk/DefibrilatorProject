@@ -42,60 +42,44 @@ namespace DefibrilatorProject.UI.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
         //
         // GET: /SoldProduct/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int soldProductId)
         {
-            return View();
+            return View(_soldProductManager.GetSoldProduct(soldProductId));
         }
 
         //
         // POST: /SoldProduct/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(SoldProduct soldProduct)
         {
             try
             {
-                // TODO: Add update logic here
-
+                _soldProductManager.EditSoldProduct(soldProduct);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
         //
         // GET: /SoldProduct/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int soldProductId)
         {
-            return View();
+            _soldProductManager.Delete(soldProductId);
+            return RedirectToAction("Index");
         }
 
-        //
-        // POST: /SoldProduct/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

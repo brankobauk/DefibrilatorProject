@@ -25,7 +25,7 @@ namespace DefibrilatorProject.DataLayer.Repositories
 
         public void EditCompany(int id, Company company)
         {
-            var companyToEdit = _db.Company.FirstOrDefault(p => p.CompanyId == id);
+            var companyToEdit = GetCompany(id);
             if (companyToEdit == null) return;
             companyToEdit.Name = company.Name;
             _db.SaveChanges();
@@ -33,7 +33,7 @@ namespace DefibrilatorProject.DataLayer.Repositories
 
         public void DeleteCompany(int id)
         {
-            var companyToDelete = _db.Company.FirstOrDefault(p => p.CompanyId == id);
+            var companyToDelete = GetCompany(id);
             _db.Company.Remove(companyToDelete);
             _db.SaveChanges();
         }

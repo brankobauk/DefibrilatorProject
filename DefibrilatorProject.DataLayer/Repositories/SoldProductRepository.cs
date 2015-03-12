@@ -19,5 +19,26 @@ namespace DefibrilatorProject.DataLayer.Repositories
             _db.SoldProduct.Add(soldProduct);
             _db.SaveChanges();
         }
+
+        public SoldProduct GetSoldProduct(int soldProductId)
+        {
+            return _db.SoldProduct.FirstOrDefault(p => p.SoldProductId == soldProductId);
+        }
+
+        public void EditSoldProduct(SoldProduct soldProduct)
+        {
+            var soldProductToEdit = GetSoldProduct(soldProduct.SoldProductId);
+            soldProductToEdit.ProductId = soldProduct.ProductId;
+            soldProductToEdit.CompanyId = soldProduct.CompanyId;
+            soldProductToEdit.SoldDate = soldProduct.SoldDate;
+            _db.SaveChanges();
+        }
+
+        public void Delete(int soldProductId)
+        {
+            var soldProductToDelete = GetSoldProduct(soldProductId);
+            _db.SoldProduct.Remove(soldProductToDelete);
+            _db.SaveChanges();
+        }
     }
 }

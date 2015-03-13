@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Create";
 }
+@if (ViewBag.Error != "")
+{
+    <div class="error">@ViewBag.Error</div>
+}
 
 <h2>Create</h2>
 

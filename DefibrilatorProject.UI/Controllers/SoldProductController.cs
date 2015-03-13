@@ -35,15 +35,15 @@ namespace DefibrilatorProject.UI.Controllers
         [HttpPost]
         public ActionResult Create(SoldProduct soldProduct)
         {
-            try
-            {
+            //try
+            //{
                 _soldProductManager.AddSoldProduct(soldProduct);
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return RedirectToAction("Index");
-            }
+            //}
+            //catch
+            //{
+            //    return RedirectToAction("Index");
+            //}
         }
 
         //

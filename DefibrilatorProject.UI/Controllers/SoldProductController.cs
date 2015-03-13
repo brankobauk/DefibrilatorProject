@@ -35,16 +35,16 @@ namespace DefibrilatorProject.UI.Controllers
         [HttpPost]
         public ActionResult Create(SoldProduct soldProduct)
         {
-            try
-            {
+            //try
+            //{
                 _soldProductManager.AddSoldProduct(soldProduct);
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                ViewBag.Error = "Item Was Not Saved. Please Try Again!";
-                return View(_soldProductManager.CreateSoldProduct());
-            }
+            //}
+            //catch
+            //{
+            //    ViewBag.Error = "Item Was Not Saved. Please Try Again!";
+            //    return View(_soldProductManager.CreateSoldProduct());
+            //}
         }
 
         //

@@ -42,7 +42,9 @@ namespace DefibrilatorProject.UI.Controllers
             }
             catch
             {
+                var item = _soldProductManager.CreateSoldProductError(soldProduct);
                 ViewBag.Error = "Item Was Not Saved. Please Try Again!";
+                ViewBag.SoldDate = item.SoldDate.ToString();
                 return View(_soldProductManager.CreateSoldProduct());
             }
         }

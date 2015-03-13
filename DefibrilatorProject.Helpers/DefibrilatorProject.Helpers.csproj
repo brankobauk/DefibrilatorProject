@@ -46,6 +46,7 @@
     <Compile Include="DropDownHelpers\DropdownHelper.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GeneralHelpers\GeneralHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

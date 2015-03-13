@@ -8,6 +8,7 @@ using DefibrilatorProject.BusinessLogic.Maintenances;
 using DefibrilatorProject.BusinessLogic.Products;
 using DefibrilatorProject.DataLayer.Repositories;
 using DefibrilatorProject.Helpers.DropDownHelpers;
+using DefibrilatorProject.Helpers.GeneralHelpers;
 using DefibrilatorProject.Models.Models;
 using DefibrilatorProject.Models.ViewModels;
 
@@ -20,6 +21,7 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         private readonly CompanyManager _companyManager = new CompanyManager();
         private readonly DropdownHelper _dropdownHelper = new DropdownHelper();
         private readonly MaintenanceManager _maintenanceManager = new MaintenanceManager();
+        private readonly GeneralHelper _generalHelper = new GeneralHelper();
         public List<SoldProduct> GetSoldProducts()
         {
             return _soldProductRepository.GetSoldProducts();
@@ -40,8 +42,9 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
 
         public void AddSoldProduct(SoldProduct soldProduct)
         {
-            _soldProductRepository.AddSoldProduct(soldProduct);
-            _maintenanceManager.AddNewSoldProduct(soldProduct);
+            var correctSoldProduct = GetCorrectSoldProduct(soldProduct);
+            _soldProductRepository.AddSoldProduct(correctSoldProduct);
+            _maintenanceManager.AddNewSoldProduct(correctSoldProduct);
         }
 
         public SoldProductViewModel GetSoldProduct(int soldProductId)
@@ -62,6 +65,16 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         public void Delete(int soldProductId)
         {
             _soldProductRepository.Delete(soldProductId);
+        }
+
+        private SoldProduct GetCorrectSoldProduct(SoldProduct soldProduct)
+        {
+            return new SoldProduct()
+            {
+                ProductId = soldProduct.ProductId,
+                CompanyId = soldProduct.CompanyId,
+                SoldDate = _generalHelper.FormatDate(soldProduct.SoldDate)
+            };
         }
     }
 }

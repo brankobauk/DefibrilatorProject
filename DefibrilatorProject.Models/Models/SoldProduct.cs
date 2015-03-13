@@ -14,6 +14,7 @@ namespace DefibrilatorProject.Models.Models
         public int SoldProductId { get; set; }
         public int ProductId { get; set; }
         public int CompanyId { get; set; }
+        [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime SoldDate { get; set; }
         public virtual Company Company { get; set; }

@@ -25,7 +25,7 @@ namespace DefibrilatorProject.BusinessLogic.Maintenances
                     SoldProductId = soldProduct.SoldProductId,
                     ProductPropertyId = productProperty.ProductPropertyId,
                     Notes = "ProductSold",
-                    DateOfMainenance = DateTime.Now
+                    DateOfMainenance = DateTime.UtcNow
                 };
                 _maintenanceRepository.AddMaintenanceItem(maintenanceItem);
             }

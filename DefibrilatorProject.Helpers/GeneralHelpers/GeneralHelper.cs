@@ -17,7 +17,7 @@ namespace DefibrilatorProject.Helpers.GeneralHelpers
             {
                 var datePartsTmp = correctDate.Split(Convert.ToChar(" "));
                 var dateParts = datePartsTmp[0].Split(Convert.ToChar("/"));
-                correctDate = dateParts[2] + "-" + dateParts[0] + "-" + dateParts[1];
+                correctDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
             }
             else
             {

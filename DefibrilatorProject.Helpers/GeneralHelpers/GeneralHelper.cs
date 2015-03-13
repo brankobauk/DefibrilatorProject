@@ -11,13 +11,13 @@ namespace DefibrilatorProject.Helpers.GeneralHelpers
 {
     public class GeneralHelper
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         public DateTime FormatDate(DateTime date)
         {
-            _logger.Info(date);
+            Logger.Info(date);
             TimeZoneInfo tz = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
             DateTime utc = TimeZoneInfo.ConvertTimeToUtc(date, tz);
-            _logger.Info(utc);
+            Logger.Info(utc);
             return utc;
         }
     }

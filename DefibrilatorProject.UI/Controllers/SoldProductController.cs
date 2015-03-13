@@ -8,6 +8,7 @@ using DefibrilatorProject.BusinessLogic.Products;
 using DefibrilatorProject.BusinessLogic.SoldProducts;
 using DefibrilatorProject.Models.Models;
 using DefibrilatorProject.Models.ViewModels;
+using NLog;
 
 namespace DefibrilatorProject.UI.Controllers
 {
@@ -16,6 +17,7 @@ namespace DefibrilatorProject.UI.Controllers
         //
         // GET: /SoldProduct/
         private readonly SoldProductManager _soldProductManager = new SoldProductManager();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         public ActionResult Index()
         {
             return View(_soldProductManager.GetSoldProducts());
@@ -37,6 +39,7 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
+                Logger.Info(soldProduct.SoldDate.ToString);
                 _soldProductManager.AddSoldProduct(soldProduct);
                 return RedirectToAction("Index");
             }

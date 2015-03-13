@@ -39,7 +39,8 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                Logger.Info(soldProduct.SoldDate.ToString);
+                Logger.Info(soldProduct.SoldDate.ToString());
+                Console.WriteLine(soldProduct.SoldDate.ToString());
                 _soldProductManager.AddSoldProduct(soldProduct);
                 return RedirectToAction("Index");
             }

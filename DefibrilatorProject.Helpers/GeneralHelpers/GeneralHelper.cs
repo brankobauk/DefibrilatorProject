@@ -12,20 +12,9 @@ namespace DefibrilatorProject.Helpers.GeneralHelpers
     {
         public DateTime FormatDate(DateTime date)
         {
-            var correctDate = date.ToString(CultureInfo.InvariantCulture);
-            if (correctDate.Contains("/")) 
-            {
-                var datePartsTmp = correctDate.Split(Convert.ToChar(" "));
-                var dateParts = datePartsTmp[0].Split(Convert.ToChar("/"));
-                correctDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
-            }
-            else
-            {
-                var datePartsTmp = correctDate.Split(Convert.ToChar(" "));
-                var dateParts = datePartsTmp[0].Split(Convert.ToChar("."));
-                correctDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
-            }
-            return Convert.ToDateTime(correctDate);
+            date = DateTime.SpecifyKind(date, DateTimeKind.Utc);
+            var currentUserTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time"); // GMT:+07
+            return TimeZoneInfo.ConvertTime(date, currentUserTimeZoneInfo);
         }
     }
 }

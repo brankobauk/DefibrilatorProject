@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -27,6 +29,8 @@ namespace DefibrilatorProject.UI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("sl-SI");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("sl-SI");
             _initWorker.StartWorker();
             
         }

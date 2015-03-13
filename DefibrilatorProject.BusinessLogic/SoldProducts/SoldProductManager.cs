@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DefibrilatorProject.BusinessLogic.Companies;
+using DefibrilatorProject.BusinessLogic.Maintenances;
 using DefibrilatorProject.BusinessLogic.Products;
 using DefibrilatorProject.DataLayer.Repositories;
 using DefibrilatorProject.Helpers.DropDownHelpers;
@@ -18,6 +19,7 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         private readonly ProductManager _productManager = new ProductManager();
         private readonly CompanyManager _companyManager = new CompanyManager();
         private readonly DropdownHelper _dropdownHelper = new DropdownHelper();
+        private readonly MaintenanceManager _maintenanceManager = new MaintenanceManager();
         public List<SoldProduct> GetSoldProducts()
         {
             return _soldProductRepository.GetSoldProducts();
@@ -39,6 +41,7 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         public void AddSoldProduct(SoldProduct soldProduct)
         {
             _soldProductRepository.AddSoldProduct(soldProduct);
+            _maintenanceManager.AddNewSoldProduct(soldProduct);
         }
 
         public SoldProductViewModel GetSoldProduct(int soldProductId)

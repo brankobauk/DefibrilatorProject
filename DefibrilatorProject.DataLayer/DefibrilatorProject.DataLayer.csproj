@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201503111459535_Clean.Designer.cs">
       <DependentUpon>201503111459535_Clean.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503131359017_MaintenanceMiration.cs" />
+    <Compile Include="Migrations\201503131359017_MaintenanceMiration.Designer.cs">
+      <DependentUpon>201503131359017_MaintenanceMiration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +89,7 @@
     <Compile Include="Repositories\CompanyRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repositories\MaintenanceRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\SoldProductRepository.cs" />
   </ItemGroup>
@@ -113,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503111459535_Clean.resx">
       <DependentUpon>201503111459535_Clean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503131359017_MaintenanceMiration.resx">
+      <DependentUpon>201503131359017_MaintenanceMiration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

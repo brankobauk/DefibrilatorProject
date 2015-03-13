@@ -54,6 +54,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Mails\MailSender.cs" />
+    <Compile Include="Maintenances\MaintenanceManager.cs" />
     <Compile Include="Products\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoldProducts\SoldProductManager.cs" />

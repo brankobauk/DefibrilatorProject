@@ -200,8 +200,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Controllers\SoldProductController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -333,9 +334,10 @@
     <Content Include="Views\Product\_ProductPropertyRow.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\SoldProduct\Index.cshtml" />
     <Content Include="Views\SoldProduct\Create.cshtml" />
     <Content Include="Views\SoldProduct\Edit.cshtml" />
+    <Content Include="Views\SoldProduct\Index.cshtml" />
+    <Content Include="Views\Maintenance\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

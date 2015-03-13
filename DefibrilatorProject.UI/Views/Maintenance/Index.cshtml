@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DefibrilatorProject.Models.Models.Maintenance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SoldProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPropertyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfMainenance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoldProductId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPropertyId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfMainenance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaintenanceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaintenanceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaintenanceId })
+        </td>
+    </tr>
+}
+
+</table>

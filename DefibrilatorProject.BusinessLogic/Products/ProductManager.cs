@@ -47,7 +47,7 @@ namespace DefibrilatorProject.BusinessLogic.Products
             return product;
         }
 
-        private List<ProductProperty> GetProductProperty(int productId, FormCollection collection)
+        private List<ProductProperty> GetProductPropertiesFromForm(int productId, FormCollection collection)
         {
             var productProperties = new List<ProductProperty>();
             var counter = Convert.ToInt32(collection["ProductPropertyCount"]);
@@ -71,5 +71,11 @@ namespace DefibrilatorProject.BusinessLogic.Products
             }
             return productProperties;
         }
+
+        public List<ProductProperty> GetProductPropertyByProductId(int productId)
+        {
+            return _productRepository.GetProductPropertyByProductId(productId);
+        }
+
     }
 }

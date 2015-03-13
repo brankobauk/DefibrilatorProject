@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DefibrilatorProject.Models.Models
 {
     public class SoldProduct
     {
+        public SoldProduct()
+        {
+            Maintenance = new List<Maintenance>();
+        }
         [Key]
         public int SoldProductId { get; set; }
         public int ProductId { get; set; }
@@ -13,5 +18,6 @@ namespace DefibrilatorProject.Models.Models
         public DateTime SoldDate { get; set; }
         public virtual Company Company { get; set; }
         public virtual Product Product { get; set; }
+        private ICollection<Maintenance> Maintenance { get; set; }
     }
 }

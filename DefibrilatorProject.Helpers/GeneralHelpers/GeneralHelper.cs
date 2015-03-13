@@ -12,9 +12,9 @@ namespace DefibrilatorProject.Helpers.GeneralHelpers
     {
         public DateTime FormatDate(DateTime date)
         {
-            date = DateTime.SpecifyKind(date, DateTimeKind.Utc);
-            var currentUserTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time"); // GMT:+07
-            return TimeZoneInfo.ConvertTime(date, currentUserTimeZoneInfo);
+            TimeZoneInfo tz = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
+            DateTime utc = TimeZoneInfo.ConvertTimeToUtc(date, tz);
+            return utc;
         }
     }
 }

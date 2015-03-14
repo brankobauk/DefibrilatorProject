@@ -42,14 +42,8 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
 
         public void AddSoldProduct(SoldProduct soldProduct)
         {
-            var correctSoldProduct = GetCorrectSoldProduct(soldProduct);
-            _soldProductRepository.AddSoldProduct(correctSoldProduct);
-            _maintenanceManager.AddNewSoldProduct(correctSoldProduct);
-        }
-
-        public SoldProduct CreateSoldProductError(SoldProduct soldProduct)
-        {
-            return GetCorrectSoldProduct(soldProduct);
+            _soldProductRepository.AddSoldProduct(soldProduct);
+            _maintenanceManager.AddNewSoldProduct(soldProduct);
         }
 
         public SoldProductViewModel GetSoldProduct(int soldProductId)

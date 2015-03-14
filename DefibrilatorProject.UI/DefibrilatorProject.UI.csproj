@@ -49,13 +49,6 @@
     <Reference Include="Common.Logging.Core">
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
-    <Reference Include="LogentriesCore">
-      <HintPath>..\packages\logentries.core.2.6.7\lib\net40\LogentriesCore.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="LogentriesNLog">
-      <HintPath>..\packages\logentries.nlog.2.4.6\lib\net40\LogentriesNLog.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.WindowsAzure.Configuration">
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>

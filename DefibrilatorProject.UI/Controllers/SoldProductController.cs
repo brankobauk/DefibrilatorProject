@@ -17,7 +17,6 @@ namespace DefibrilatorProject.UI.Controllers
         //
         // GET: /SoldProduct/
         private readonly SoldProductManager _soldProductManager = new SoldProductManager();
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         public ActionResult Index()
         {
             return View(_soldProductManager.GetSoldProducts());
@@ -39,16 +38,12 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                Logger.Info(soldProduct.SoldDate.ToString());
-                Console.WriteLine(soldProduct.SoldDate.ToString());
                 _soldProductManager.AddSoldProduct(soldProduct);
                 return RedirectToAction("Index");
             }
             catch
             {
-                var item = _soldProductManager.CreateSoldProductError(soldProduct);
                 ViewBag.Error = "Item Was Not Saved. Please Try Again!";
-                ViewBag.SoldDate = soldProduct.SoldDate.ToString();
                 return View(_soldProductManager.CreateSoldProduct());
             }
         }

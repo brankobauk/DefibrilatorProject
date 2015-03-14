@@ -54,6 +54,7 @@
     <Compile Include="ViewModels\AccountViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\MaintenanceViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\SoldProductViewModel.cs" />
   </ItemGroup>

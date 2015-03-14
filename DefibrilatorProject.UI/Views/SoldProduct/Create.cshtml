@@ -31,7 +31,13 @@
         <div class="editor-field">
             @Html.DropDownListFor(x => x.SoldProduct.CompanyId, Model.Companies)
         </div>
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoldProduct.Location)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoldProduct.Location)
+            @Html.ValidationMessageFor(model => model.SoldProduct.Location)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.SoldProduct.SoldDate)
         </div>

@@ -65,15 +65,5 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         {
             _soldProductRepository.Delete(soldProductId);
         }
-
-        private SoldProduct GetCorrectSoldProduct(SoldProduct soldProduct)
-        {
-            return new SoldProduct()
-            {
-                ProductId = soldProduct.ProductId,
-                CompanyId = soldProduct.CompanyId,
-                SoldDate = _generalHelper.FormatDate(soldProduct.SoldDate)
-            };
-        }
     }
 }

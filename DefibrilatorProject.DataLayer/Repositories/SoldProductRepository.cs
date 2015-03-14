@@ -30,6 +30,7 @@ namespace DefibrilatorProject.DataLayer.Repositories
             var soldProductToEdit = GetSoldProduct(soldProduct.SoldProductId);
             soldProductToEdit.ProductId = soldProduct.ProductId;
             soldProductToEdit.CompanyId = soldProduct.CompanyId;
+            soldProductToEdit.Location = soldProduct.Location;
             soldProductToEdit.SoldDate = soldProduct.SoldDate;
             _db.SaveChanges();
         }

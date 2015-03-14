@@ -12,7 +12,9 @@ namespace DefibrilatorProject.UI.Controllers
         private readonly MaintenanceManager _maintenanceManager = new MaintenanceManager();
         public ActionResult Index()
         {
-            return View(_maintenanceManager.GetMaintenanceItems());
+            var productId = Convert.ToInt32(Request.QueryString["ProductId"]);
+            var companyId = Convert.ToInt32(Request.QueryString["CompanyId"]);
+            return View(_maintenanceManager.GetMaintenanceItems(productId, companyId));
         }
 
         //

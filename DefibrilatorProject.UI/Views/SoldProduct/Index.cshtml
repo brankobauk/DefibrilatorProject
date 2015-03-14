@@ -18,6 +18,9 @@
             @Html.DisplayNameFor(model => model.Company)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.SoldDate)
         </th>
         <th></th>
@@ -32,10 +35,14 @@
             @Html.DisplayFor(modelItem => item.Company.Name)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.SoldDate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { soldProductId=item.SoldProductId }) |
+            @Html.ActionLink("Maintenance History", "Index", "Maintenance", new { @productId = @item.ProductId, @companyId = @item.CompanyId }, null) |
             @Html.ActionLink("Delete", "Delete", new { soldProductId = item.SoldProductId })
         </td>
     </tr>

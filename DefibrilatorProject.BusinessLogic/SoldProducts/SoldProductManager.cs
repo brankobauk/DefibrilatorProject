@@ -33,7 +33,7 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
             {
                 SoldProduct = new SoldProduct()
                 {
-                    SoldDate = DateTime.UtcNow
+                    SoldDate = DateTime.Now
                 },
                 Products = _dropdownHelper.GetProductListForDropDown(_productManager.GetProducts()),
                 Companies = _dropdownHelper.GetCompanyListForDropDown(_companyManager.GetCompanies())

@@ -36,7 +36,7 @@
             @Html.LabelFor(model => model.SoldProduct.SoldDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.SoldProduct.SoldDate, new { @Value = Model.SoldProduct.SoldDate.ToString("dd.MM.yyyy") })
+            @Html.EditorFor(model => model.SoldProduct.SoldDate)
             @Html.ValidationMessageFor(model => model.SoldProduct.SoldDate)
         </div>
 

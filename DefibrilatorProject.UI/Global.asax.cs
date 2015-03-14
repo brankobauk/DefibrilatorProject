@@ -29,12 +29,12 @@ namespace DefibrilatorProject.UI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            CultureInfo cInfo = new CultureInfo("sl-SI")
-            {
-                DateTimeFormat = {ShortDatePattern = "dd.MM.yyyy", DateSeparator = "."}
-            };
-            Thread.CurrentThread.CurrentCulture = cInfo;
-            Thread.CurrentThread.CurrentUICulture = cInfo;
+            //CultureInfo cInfo = new CultureInfo("sl-SI")
+            //{
+            //    DateTimeFormat = {ShortDatePattern = "dd.MM.yyyy", DateSeparator = "."}
+            //};
+            //Thread.CurrentThread.CurrentCulture = cInfo;
+            //Thread.CurrentThread.CurrentUICulture = cInfo;
 
             _initWorker.StartWorker();
             

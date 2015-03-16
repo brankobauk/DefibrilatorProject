@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DefibrilatorProject.BusinessLogic.Maintenances;
 
@@ -12,8 +9,19 @@ namespace DefibrilatorProject.UI.Controllers
         private readonly MaintenanceManager _maintenanceManager = new MaintenanceManager();
         public ActionResult Index()
         {
-            var productId = Convert.ToInt32(Request.QueryString["ProductId"]);
-            var companyId = Convert.ToInt32(Request.QueryString["CompanyId"]);
+            var productIdQs = Request.QueryString["ProductId"];
+            int productId = 0;
+            if (!string.IsNullOrEmpty(productIdQs))
+            {
+                productId = Convert.ToInt32(productIdQs);
+            }
+            var companyIdQs = Request.QueryString["CompanyId"];
+            int companyId = 0;
+            if (!string.IsNullOrEmpty(companyIdQs))
+            {
+                companyId = Convert.ToInt32(companyIdQs);
+            }
+             
             return View(_maintenanceManager.GetMaintenanceItems(productId, companyId));
         }
 

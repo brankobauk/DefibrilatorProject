@@ -20,5 +20,31 @@ namespace DefibrilatorProject.Helpers.DropDownHelpers
         {
             return products.Select(product => new SelectListItem { Value = product.ProductId.ToString(CultureInfo.InvariantCulture), Text = product.Name.ToString(CultureInfo.InvariantCulture) }).ToList();
         }
+
+        public IEnumerable<SelectListItem> GetCompanyListForDropDownWithEmptyItem(IEnumerable<Company> companies)
+        {
+            var items = new List<SelectListItem>();
+            var firstItem = new SelectListItem
+            {
+                Value = "",
+                Text = "--- Choose Company ---"
+            };
+            items.Add(firstItem);
+            items.AddRange(GetCompanyListForDropDown(companies));
+            return items;
+        }
+
+        public IEnumerable<SelectListItem> GetProductListForDropDownWithEmptyItem(List<Product> products)
+        {
+            var items = new List<SelectListItem>();
+            var firstItem = new SelectListItem
+            {
+                Value = "",
+                Text = "--- Choose Product ---"
+            };
+            items.Add(firstItem);
+            items.AddRange(GetProductListForDropDown(products));
+            return items;
+        }
     }
 }

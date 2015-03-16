@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using DefibrilatorProject.Models.Models;
 
 namespace DefibrilatorProject.Models.ViewModels
 {
     public class MaintenanceViewModel
     {
-        public List<Maintenance> Maintenances { get; set; }
-        public List<SoldProduct> SoldProducts { get; set; }
-        public List<Product> Products { get; set; }
-        public List<Company> Companies { get; set; }
+        public IEnumerable<Maintenance> Maintenances { get; set; }
+        public IEnumerable<SelectListItem> Products { get; set; }
+        public IEnumerable<SelectListItem> Companies { get; set; }
+        public int ProductId { get; set; } 
+        public int CompanyId { get; set; }
     }
 }

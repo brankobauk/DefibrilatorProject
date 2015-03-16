@@ -288,6 +288,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\maintenance\general.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\product\general.js" />
     <Content Include="Scripts\soldproduct\general.js" />

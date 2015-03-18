@@ -21,5 +21,20 @@ namespace DefibrilatorProject.DataLayer.Repositories
             _db.Maintenance.Add(maintenanceItem);
             _db.SaveChanges();
         }
+
+        public Maintenance GetMaintenanceItem(int maintenanceId)
+        {
+            return _db.Maintenance.FirstOrDefault(p => p.MaintenanceId == maintenanceId);
+        }
+
+        public void EditMaintenance(Maintenance maintenance)
+        {
+            var maintenanceItem = GetMaintenanceItem(maintenance.MaintenanceId);
+            maintenanceItem.SoldProductId = maintenance.SoldProductId;
+            maintenanceItem.ProductPropertyId = maintenance.ProductPropertyId;
+            maintenanceItem.DateOfMainenance = maintenance.DateOfMainenance;
+            maintenanceItem.Notes = maintenance.Notes;
+            _db.SaveChanges();
+        }
     }
 }

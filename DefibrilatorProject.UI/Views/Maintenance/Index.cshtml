@@ -58,9 +58,11 @@
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.MaintenanceId}) |
-                @Html.ActionLink("Details", "Details", new {id = item.MaintenanceId}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.MaintenanceId})
+                @Html.ActionLink("Edit", "Edit", new { maintenanceId = item.MaintenanceId }) |
+                @if (item.Notes != "ProductSold")
+                {
+                    @:| @Html.ActionLink("Delete", "Delete", new { maintenanceId = item.MaintenanceId })
+                }
             </td>
         </tr>
     }

@@ -11,13 +11,14 @@ namespace DefibrilatorProject.UI.Controllers
     [Authorize]
     public class CompanyController : Controller
     {
-        private readonly CompanyManager _companyManager = new CompanyManager();
+        private readonly CompanyHandler _companyHandler = new CompanyHandler();
+     
         //
         // GET: /Company/
 
         public ActionResult Index()
         {
-            return View(_companyManager.GetCompanies());
+            return View(_companyHandler.GetCompanies());
         }
 
         public ActionResult Create()
@@ -30,7 +31,7 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                _companyManager.AddCompany(company);
+                _companyHandler.AddCompany(company);
                 return RedirectToAction("Index");
             }
             catch
@@ -41,8 +42,8 @@ namespace DefibrilatorProject.UI.Controllers
 
         public ActionResult Edit(int id)
         {
-            
-            return View(_companyManager.GetCompany(id));
+
+            return View(_companyHandler.GetCompany(id));
         }
 
         [HttpPost]
@@ -50,7 +51,7 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                _companyManager.EditCompany(id, company);
+                _companyHandler.EditCompany(id, company);
                 return RedirectToAction("Index");
             }
             catch
@@ -63,13 +64,17 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                _companyManager.DeleteCompany(id);
+                _companyHandler.DeleteCompany(id);
                 return RedirectToAction("Index");
             }
             catch
             {
                 return RedirectToAction("Index");
             }
+        }
+        public PartialViewResult CreateDropDown()
+        {
+            return PartialView("_CompanyDropDown", _companyHandler.GetCompaniesForDropDown());
         }
     }
 }

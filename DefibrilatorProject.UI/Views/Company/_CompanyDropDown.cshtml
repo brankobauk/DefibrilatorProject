@@ -1,0 +1,9 @@
+﻿@model DefibrilatorProject.Models.ViewModels.MaintenanceViewModel
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Companies)
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.CompanyId, Model.Companies)
+</div>
+            

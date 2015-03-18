@@ -16,10 +16,10 @@ namespace DefibrilatorProject.UI.Controllers
     {
         //
         // GET: /SoldProduct/
-        private readonly SoldProductManager _soldProductManager = new SoldProductManager();
+        private readonly SoldProductHandler _soldProductHandler = new SoldProductHandler();
         public ActionResult Index()
         {
-            return View(_soldProductManager.GetSoldProducts());
+            return View(_soldProductHandler.GetSoldProducts());
         }
 
         //
@@ -27,7 +27,7 @@ namespace DefibrilatorProject.UI.Controllers
 
         public ActionResult Create()
         {
-            return View(_soldProductManager.CreateSoldProduct());
+            return View(_soldProductHandler.CreateSoldProduct());
         }
 
         //
@@ -38,13 +38,13 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                _soldProductManager.AddSoldProduct(soldProduct);
+                _soldProductHandler.AddSoldProduct(soldProduct);
                 return RedirectToAction("Index");
             }
             catch
             {
                 ViewBag.Error = "Item Was Not Saved. Please Try Again!";
-                return View(_soldProductManager.CreateSoldProduct());
+                return View(_soldProductHandler.CreateSoldProduct());
             }
         }
 
@@ -53,7 +53,7 @@ namespace DefibrilatorProject.UI.Controllers
 
         public ActionResult Edit(int soldProductId)
         {
-            return View(_soldProductManager.GetSoldProduct(soldProductId));
+            return View(_soldProductHandler.GetSoldProduct(soldProductId));
         }
 
         //
@@ -64,7 +64,7 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                _soldProductManager.EditSoldProduct(soldProduct);
+                _soldProductHandler.EditSoldProduct(soldProduct);
                 return RedirectToAction("Index");
             }
             catch
@@ -78,10 +78,19 @@ namespace DefibrilatorProject.UI.Controllers
 
         public ActionResult Delete(int soldProductId)
         {
-            _soldProductManager.Delete(soldProductId);
+            _soldProductHandler.Delete(soldProductId);
             return RedirectToAction("Index");
         }
 
-        
+        public PartialViewResult CreateDropDown()
+        {
+            var companyIdQs = Request.QueryString["CompanyId"];
+            int companyId = 0;
+            if (!string.IsNullOrEmpty(companyIdQs))
+            {
+                companyId = Convert.ToInt32(companyIdQs);
+            }
+            return PartialView("_SoldProductDropDown", _soldProductHandler.GetSoldProductListForDropDownWithEmptyItem(companyId));
+        }
     }
 }

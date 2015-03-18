@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
 using DefibrilatorProject.BusinessLogic.Maintenances;
+using DefibrilatorProject.Models.Models;
 
 namespace DefibrilatorProject.UI.Controllers
 {
     public class MaintenanceController : Controller
     {
-        private readonly MaintenanceManager _maintenanceManager = new MaintenanceManager();
+        private readonly MaintenanceHandler _maintenanceHandler = new MaintenanceHandler();
         public ActionResult Index()
         {
             var productIdQs = Request.QueryString["ProductId"];
@@ -21,16 +22,8 @@ namespace DefibrilatorProject.UI.Controllers
             {
                 companyId = Convert.ToInt32(companyIdQs);
             }
-             
-            return View(_maintenanceManager.GetMaintenanceItems(productId, companyId));
-        }
 
-        //
-        // GET: /Maintenance/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View(_maintenanceHandler.GetMaintenanceItems(productId, companyId));
         }
 
         //
@@ -38,45 +31,44 @@ namespace DefibrilatorProject.UI.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(_maintenanceHandler.CreateMaintenanceItem());
         }
 
         //
         // POST: /Maintenance/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Maintenance maintenance)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                _maintenanceHandler.AddMaintenanceItem(maintenance);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
         //
         // GET: /Maintenance/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int maintenanceId)
         {
-            return View();
+            return View(_maintenanceHandler.GetMaintenanceItem(maintenanceId));
         }
 
         //
         // POST: /Maintenance/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Maintenance maintenance)
         {
             try
             {
                 // TODO: Add update logic here
-
+                _maintenanceHandler.EditMaintenanceItem(maintenance);
                 return RedirectToAction("Index");
             }
             catch

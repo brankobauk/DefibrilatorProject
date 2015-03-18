@@ -288,6 +288,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\maintenance\create.js" />
+    <Content Include="Scripts\maintenance\edit.js" />
     <Content Include="Scripts\maintenance\general.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\product\general.js" />
@@ -345,6 +347,11 @@
     <Content Include="Views\SoldProduct\Edit.cshtml" />
     <Content Include="Views\SoldProduct\Index.cshtml" />
     <Content Include="Views\Maintenance\Index.cshtml" />
+    <Content Include="Views\Maintenance\Create.cshtml" />
+    <Content Include="Views\Company\_CompanyDropDown.cshtml" />
+    <Content Include="Views\SoldProduct\_SoldProductDropDown.cshtml" />
+    <Content Include="Views\Product\_ProductPropertyDropDown.cshtml" />
+    <Content Include="Views\Maintenance\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

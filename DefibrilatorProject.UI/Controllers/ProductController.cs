@@ -12,13 +12,13 @@ namespace DefibrilatorProject.UI.Controllers
     [Authorize]
     public class ProductController : Controller
     {
-        private readonly ProductManager _productManager = new ProductManager();
+        private readonly ProductHandler _productHandler = new ProductHandler();
         //
         // GET: /Product/
 
         public ActionResult Index()
         {
-            return View(_productManager.GetProducts());
+            return View(_productHandler.GetProducts());
         }
 
         //
@@ -37,7 +37,7 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                _productManager.AddProduct(product);
+                _productHandler.AddProduct(product);
                 return RedirectToAction("Index");
             }
             catch
@@ -51,7 +51,7 @@ namespace DefibrilatorProject.UI.Controllers
 
         public ActionResult Edit(int productId)
         {
-            var product = _productManager.GetProduct(productId);
+            var product = _productHandler.GetProduct(productId);
             return View(product);
         }
 
@@ -63,7 +63,7 @@ namespace DefibrilatorProject.UI.Controllers
         {
             try
             {
-                _productManager.EditProduct(product);
+                _productHandler.EditProduct(product);
                 return RedirectToAction("Index");
             }
             catch
@@ -71,17 +71,6 @@ namespace DefibrilatorProject.UI.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-        //
-        // GET: /Product/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Product/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
@@ -101,6 +90,17 @@ namespace DefibrilatorProject.UI.Controllers
         public PartialViewResult NewProperty()
         {
             return PartialView("_ProductPropertyRow", new ProductProperty());
+        }
+
+        public PartialViewResult CreateProductPropertyDropDown()
+        {
+            var soldProductIdQs = Request.QueryString["SoldProductId"];
+            int SoldProductId = 0;
+            if (!string.IsNullOrEmpty(soldProductIdQs))
+            {
+                SoldProductId = Convert.ToInt32(soldProductIdQs);
+            }
+            return PartialView("_ProductPropertyDropDown", _productHandler.GetProductPropertyForDropDownWithEmptyItem(SoldProductId));
         }
         #endregion
     }

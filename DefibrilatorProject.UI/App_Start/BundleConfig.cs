@@ -27,6 +27,12 @@ namespace DefibrilatorProject.UI
             bundles.Add(new ScriptBundle("~/bundles/maintenance").Include(
                         "~/Scripts/maintenance/general.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/maintenance/create").Include(
+                        "~/Scripts/maintenance/create.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/maintenance/edit").Include(
+                       "~/Scripts/maintenance/edit.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

@@ -12,7 +12,7 @@ namespace DefibrilatorProject.BusinessLogic.Accounts
     public class AccountManager
     {
         private readonly InitializeDatabaseConnection _initializeDatabaseConnection = new InitializeDatabaseConnection();
-        private readonly DropdownHelper _dropdownHelper = new DropdownHelper();
+        private readonly DropDownHelper _dropdownHelper = new DropDownHelper();
         private readonly AccountRepository _accountRepository = new AccountRepository();
         private readonly CompanyManager _companyManager = new CompanyManager();
         public void InitializeSimpleMembership()

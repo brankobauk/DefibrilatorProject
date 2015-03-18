@@ -41,6 +41,6 @@
         ""
     );
     if ($("#Maintenance_Notes").val() === "ProductSold") {
-        $("#Maintenance_Notes").attr("disabled", "disabled");
+        $("#Maintenance_Notes").attr("readonly", "readonly");
     }
 });

@@ -45,8 +45,16 @@
             @Html.LabelFor(model => model.Maintenance.Notes)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Maintenance.Notes)
-            @Html.ValidationMessageFor(model => model.Maintenance.Notes)
+            @if (Model.Maintenance.Notes == "ProductSold")
+            {
+                @Html.Label(Model.Maintenance.Notes, new { @class = "text-box" })
+                @Html.HiddenFor(model => model.Maintenance.Notes)
+            }
+            else
+            {
+                @Html.EditorFor(model => model.Maintenance.Notes)
+                @Html.ValidationMessageFor(model => model.Maintenance.Notes)
+            }
         </div>
 
         <p>

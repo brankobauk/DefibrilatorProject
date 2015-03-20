@@ -18,7 +18,6 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         private readonly CompanyManager _companyManager = new CompanyManager();
         private readonly DropDownManager _dropDownManager = new DropDownManager();
         private readonly MaintenanceManager _maintenanceManager = new MaintenanceManager();
-        private readonly ProductPropertyManager _productPropertyManager = new ProductPropertyManager();
         public List<SoldProduct> GetSoldProducts()
         {
             return _soldProductManager.GetSoldProducts();
@@ -40,7 +39,7 @@ namespace DefibrilatorProject.BusinessLogic.SoldProducts
         public void AddSoldProduct(SoldProduct soldProduct)
         {
             _soldProductManager.AddSoldProduct(soldProduct);
-            var productProperties = _productPropertyManager.GetProductPropertyByProductId(soldProduct.ProductId);
+            var productProperties = _productManager.GetProductPropertyByProductId(soldProduct.ProductId);
             foreach (var productProperty in productProperties)
             {
                 var maintenanceItem = new Maintenance()

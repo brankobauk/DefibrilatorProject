@@ -62,10 +62,10 @@
     </Compile>
     <Compile Include="Products\ProductHandler.cs" />
     <Compile Include="Products\ProductManager.cs" />
-    <Compile Include="Products\ProductPropertyManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoldProducts\SoldProductHandler.cs" />
     <Compile Include="SoldProducts\SoldProductManager.cs" />
+    <Compile Include="Workers\WorkerHandler.cs" />
     <Compile Include="Workers\WorkerManager.cs" />
   </ItemGroup>
   <ItemGroup>

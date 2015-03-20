@@ -11,10 +11,10 @@ namespace DefibrilatorProject.Worker.Jobs
     
     public class UpcomingServiceNotificationJob : IJob
     {
-        private readonly WorkerManager _workerManager = new WorkerManager();
+        private readonly WorkerHandler _workerHandler = new WorkerHandler();
         public void Execute(IJobExecutionContext context)
         {
-            _workerManager.StartUpcomingServiceNotification();
+            _workerHandler.StartUpcomingServiceNotification();
         }
     }
 }

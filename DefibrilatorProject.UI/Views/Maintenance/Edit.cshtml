@@ -52,7 +52,7 @@
             }
             else
             {
-                @Html.EditorFor(model => model.Maintenance.Notes)
+                @Html.TextAreaFor(model => model.Maintenance.Notes)
                 @Html.ValidationMessageFor(model => model.Maintenance.Notes)
             }
         </div>

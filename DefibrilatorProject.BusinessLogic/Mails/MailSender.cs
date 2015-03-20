@@ -10,7 +10,8 @@ namespace DefibrilatorProject.BusinessLogic.Mails
             client.SendMail(new System.Net.Mail.MailMessage(from, to)
             {
                 Subject = subject,
-                Body = body
+                Body = body,
+                IsBodyHtml = true
             });
         }
     }

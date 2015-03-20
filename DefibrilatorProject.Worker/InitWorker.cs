@@ -19,8 +19,8 @@ namespace DefibrilatorProject.Worker
 
             var upcomingServiceJob = JobBuilder.Create<UpcomingServiceNotificationJob>().Build();
             var cronScheduleBuilder = CronScheduleBuilder.DailyAtHourAndMinute(9, 00).InTimeZone(timeZoneInfo);
-            var trigger = TriggerBuilder.Create().StartNow().WithSchedule(cronScheduleBuilder).Build();
-            //var trigger = TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInMinutes(5).RepeatForever()).Build();
+            //var trigger = TriggerBuilder.Create().StartNow().WithSchedule(cronScheduleBuilder).Build();
+            var trigger = TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInMinutes(5).RepeatForever()).Build();
             scheduler.ScheduleJob(upcomingServiceJob, trigger);
 
 

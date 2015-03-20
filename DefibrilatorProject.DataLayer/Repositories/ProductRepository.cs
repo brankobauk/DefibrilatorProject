@@ -37,6 +37,7 @@ namespace DefibrilatorProject.DataLayer.Repositories
                     {
                         Name = productProperty.Name,
                         ServiceRate = productProperty.ServiceRate,
+                        Deleted = productProperty.Deleted,
                         ProductId = product.ProductId
                     };
                     AddProductProperty(productPropertyToAdd);
@@ -45,15 +46,16 @@ namespace DefibrilatorProject.DataLayer.Repositories
                 { 
                     productPropertyToEdit.Name = productProperty.Name;
                     productPropertyToEdit.ServiceRate = productProperty.ServiceRate;
+                    productPropertyToEdit.Deleted = productProperty.Deleted;
                 }
                 _db.SaveChanges();
             }
             
         }
 
-        public void DeleteProduct(int id)
+        public void DeleteProduct(int productId)
         {
-            var productToDelete = _db.Product.FirstOrDefault(p => p.ProductId == id);
+            var productToDelete = _db.Product.FirstOrDefault(p => p.ProductId == productId);
             _db.Product.Remove(productToDelete);
             _db.SaveChanges();
         }

@@ -90,7 +90,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repositories\MaintenanceRepository.cs" />
-    <Compile Include="Repositories\ProductPropertyRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\SoldProductRepository.cs" />
   </ItemGroup>

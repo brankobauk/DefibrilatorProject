@@ -37,39 +37,8 @@ namespace DefibrilatorProject.BusinessLogic.Products
 
         public Product GetProduct(int productId)
         {
-            var productToGet = _productRepository.GetProduct(productId);
-            var product = new Product()
-            {
-                Name = productToGet.Name,
-                Model = productToGet.Model,
-                ProductProperty = _productRepository.GetProductPropertyByProductId(productId)
-            };
-            return product;
-        }
-
-        private List<ProductProperty> GetProductPropertiesFromForm(int productId, FormCollection collection)
-        {
-            var productProperties = new List<ProductProperty>();
-            var counter = Convert.ToInt32(collection["ProductPropertyCount"]);
-            for (var i = 1; i <= counter; i++)
-            {
-                var productPropertyNameTag = "ProductProperty_Name_" + i;
-                var productPropertyServiceRateTag = "ProductProperty_ServiceRate_" + i;
-                var productPropertyName = Convert.ToString(collection[productPropertyNameTag]);
-                var productPropertyServiceRate = Convert.ToInt32(collection[productPropertyServiceRateTag]);
-                if(!string.IsNullOrEmpty(productPropertyName))
-                {
-                    var productProperty = new ProductProperty()
-                    {
-                        Name = productPropertyName,
-                        ServiceRate = productPropertyServiceRate,
-                        ProductId = productId
-                    };
-                    productProperties.Add(productProperty);
-                }
-                
-            }
-            return productProperties;
+            return _productRepository.GetProduct(productId);
+            
         }
 
         public List<ProductProperty> GetProductPropertyByProductId(int productId)

@@ -35,5 +35,13 @@ namespace DefibrilatorProject.BusinessLogic.Maintenances
         {
             _maintenanceRepository.EditMaintenance(maintenanceItem);
         }
+
+        public List<Maintenance> GetItemsToService()
+        {
+            var items = _maintenanceRepository.GetMaintenanceItems();
+            return
+                items.Where(
+                    p => p.DateOfMainenance.AddMonths(p.ProductProperty.ServiceRate) < DateTime.Now.AddMonths(1)).ToList();
+        }
     }
 }

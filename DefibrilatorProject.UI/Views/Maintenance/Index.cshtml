@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Maintenances.FirstOrDefault().DateOfMainenance)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Maintenances.FirstOrDefault().Notes)
+            NextMaintenanceOn
         </th>
         <th></th>
     </tr>
@@ -55,14 +55,18 @@
                 @Html.DisplayFor(modelItem => item.DateOfMainenance)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Notes)
+                @if (item.ProductProperty.Deleted == true)
+                {
+                    @:Never
+                }
+                else
+                {
+                    @item.DateOfMainenance.AddMonths(item.ProductProperty.ServiceRate).ToShortDateString();
+                }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { maintenanceId = item.MaintenanceId })
-                @if (item.Notes != "ProductSold")
-                {
-                    @:| @Html.ActionLink("Delete", "Delete", new { maintenanceId = item.MaintenanceId })
-                }
+                
             </td>
         </tr>
     }

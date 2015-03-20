@@ -10,9 +10,9 @@ namespace DefibrilatorProject.BusinessLogic.Workers
     public class WorkerManager
     {
         private readonly MailManager _mailManager = new MailManager();
-        public void StartUpcomingServiceNotification()
+        public void StartUpcomingServiceNotification(string subject, string body, string from, string to)
         {
-            _mailManager.SendEmail("test", "test", "branko.bauk@gmail.com", "branko@bauk.si");
+            _mailManager.SendEmail(subject, body, from, to);
         }
     }
 }

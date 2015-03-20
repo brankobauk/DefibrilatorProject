@@ -23,10 +23,11 @@
                         <ul id="menu">
                             @if (Request.IsAuthenticated)
                             {
-                                <li>@Html.ActionLink("Companies", "Index", "Company")</li>
-                                <li>@Html.ActionLink("Users", "Index", "Account")</li>
-                                <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                                <li>@Html.ActionLink("Maintenance", "Index", "Maintenance")</li>
                                 <li>@Html.ActionLink("Sold Product", "Index", "SoldProduct")</li>
+                                <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                                <li>@Html.ActionLink("Users", "Index", "Account")</li>
+                                <li>@Html.ActionLink("Companies", "Index", "Company")</li>
                             }
                         </ul>
                     </nav>

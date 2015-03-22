@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DefibrilatorProject.Models.Models.Company>
+﻿@using GridMvc.Html
+@model IEnumerable<DefibrilatorProject.Models.Models.Company>
 
 @{
     ViewBag.Title = "Index";
@@ -11,27 +12,14 @@
 </p>
 @if (Model != null)
 {
-    <table>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new {id = item.CompanyId}) |
-                    @Html.ActionLink("Delete", "Delete", new {id = item.CompanyId})
-                </td>
-            </tr>
-        }
-
-    </table>
+    @Html.Grid(Model).Columns(columns =>
+                    {
+                        columns.Add(c => c.CompanyId).Titled("Company Id");
+                        columns.Add(c => c.Name).Titled("Name").Filterable(true);
+                        columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { Id = o.CompanyId }, null).ToHtmlString());
+                        columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Delete", "Delete", new { Id = o.CompanyId }, null).ToHtmlString());
+                    }).WithPaging(2).Sortable(true);
+    
 }
 else
 {

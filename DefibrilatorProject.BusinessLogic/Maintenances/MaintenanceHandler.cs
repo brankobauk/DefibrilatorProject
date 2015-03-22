@@ -70,5 +70,10 @@ namespace DefibrilatorProject.BusinessLogic.Maintenances
         {
             _maintenanceManager.EditMaintenance(maintenance);
         }
+
+        public List<Maintenance> GetItemsToService()
+        {
+            return _maintenanceManager.GetItemsToService();
+        }
     }
 }

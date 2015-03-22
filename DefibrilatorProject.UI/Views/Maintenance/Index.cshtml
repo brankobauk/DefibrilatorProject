@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.DateOfMainenance)
             </td>
             <td>
-                @if (item.ProductProperty.Deleted == true)
+                @if (item.ProductProperty.StopMaintenance == true)
                 {
                     @:Never
                 }

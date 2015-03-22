@@ -301,6 +301,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\product\general.js" />
     <Content Include="Scripts\soldproduct\general.js" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -359,8 +361,6 @@
     <Content Include="Views\SoldProduct\_SoldProductDropDown.cshtml" />
     <Content Include="Views\Product\_ProductPropertyDropDown.cshtml" />
     <Content Include="Views\Maintenance\Edit.cshtml" />
-    <Content Include="Views\Shared\_GridPager.cshtml" />
-    <Content Include="Views\Shared\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

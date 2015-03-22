@@ -1,9 +1,21 @@
-﻿@model DefibrilatorProject.Models.ViewModels.MaintenanceViewModel
+﻿@using System.Web.UI.WebControls
+@using GridMvc.Html
+@model DefibrilatorProject.Models.ViewModels.MaintenanceViewModel
 
 @{
     ViewBag.Title = "Index";
 }
-
+@helper CustomRenderingOfColumn(bool stopMaintenance, DateTime date, int serviceRate)
+{
+    if (stopMaintenance)
+    {
+        @:Never
+    }
+    else
+    {
+        @date.AddMonths(serviceRate).ToShortDateString();
+    }
+}
 <h2>Index</h2>
 
 <p>
@@ -12,65 +24,17 @@
 @Html.DropDownListFor(x => x.CompanyId, Model.Companies)
 @Html.DropDownListFor(x => x.ProductId, Model.Products)
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Maintenances.FirstOrDefault().SoldProduct.Company)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Maintenances.FirstOrDefault().SoldProduct.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Maintenances.FirstOrDefault().SoldProduct)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Maintenances.FirstOrDefault().ProductProperty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Maintenances.FirstOrDefault().DateOfMainenance)
-        </th>
-        <th>
-            NextMaintenanceOn
-        </th>
-        <th></th>
-    </tr>
+@Html.Grid(Model.Maintenances).Columns(columns =>
+                    {
+                        columns.Add(c => c.SoldProduct.Company.Name).Titled("Company Name");
+                        columns.Add(c => c.SoldProduct.Location).Titled("Location");
+                        columns.Add(c => c.SoldProduct.Product.Name).Titled("Product Name");
+                        columns.Add(c => c.ProductProperty.Name).Titled("PropertyName");
+                        columns.Add(c => c.DateOfMainenance).Titled("DateOfMaintenance");
+                        columns.Add(c => c.ProductProperty.StopMaintenance).Titled("NextMaintenanceOn").RenderValueAs(o => CustomRenderingOfColumn(o.ProductProperty.StopMaintenance, o.DateOfMainenance, o.ProductProperty.ServiceRate)).Filterable(true);
+                        columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { Id = o.MaintenanceId }, null).ToHtmlString());
+                    }).WithPaging(10).Sortable(true)
 
-    @foreach (var item in Model.Maintenances)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldProduct.Company.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldProduct.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldProduct.Product.Name)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductProperty.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfMainenance)
-            </td>
-            <td>
-                @if (item.ProductProperty.StopMaintenance == true)
-                {
-                    @:Never
-                }
-                else
-                {
-                    @item.DateOfMainenance.AddMonths(item.ProductProperty.ServiceRate).ToShortDateString();
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { maintenanceId = item.MaintenanceId })
-                
-            </td>
-        </tr>
-    }
-</table>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/maintenance")

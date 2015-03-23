@@ -14,7 +14,6 @@
 {
     @Html.Grid(Model).Columns(columns =>
                     {
-                        columns.Add(c => c.CompanyId).Titled("Company Id");
                         columns.Add(c => c.Name).Titled("Name").Filterable(true);
                         columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { Id = o.CompanyId }, null).ToHtmlString());
                         columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Delete", "Delete", new { Id = o.CompanyId }, null).ToHtmlString());

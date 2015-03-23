@@ -1,5 +1,8 @@
 ﻿@using GridMvc.Html
 @model IEnumerable<DefibrilatorProject.Models.Models.Maintenance>
+@{
+    ViewBag.Title = "Items to Service";
+}
 @helper CustomRenderingOfColumn(bool stopMaintenance, DateTime date, int serviceRate)
 {
     if (stopMaintenance)

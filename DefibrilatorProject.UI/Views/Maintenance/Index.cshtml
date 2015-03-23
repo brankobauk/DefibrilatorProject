@@ -1,7 +1,9 @@
 ﻿@using System.Web.UI.WebControls
 @using GridMvc.Html
 @model DefibrilatorProject.Models.ViewModels.MaintenanceViewModel
-
+@{
+    ViewBag.Title = "Index Of Maintenance Items";
+}
 @helper CustomRenderingOfColumn(bool stopMaintenance, DateTime date, int serviceRate)
 {
     if (stopMaintenance)

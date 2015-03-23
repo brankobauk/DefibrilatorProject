@@ -25,10 +25,12 @@ a {
     a:link, a:visited,
     a:active, a:hover {
         color: #333;
+        text-decoration: underline;
     }
 
     a:hover {
-        background-color: #c7d1d6;
+        background:none;
+        text-decoration: none;
     }
 
 header, footer, hgroup,
@@ -553,7 +555,6 @@ th {
     th a:link, th a:visited, th a:active, th a:hover {
         color: #333;
         font-weight: 600;
-        text-decoration: none;
         padding: 0;
     }
 

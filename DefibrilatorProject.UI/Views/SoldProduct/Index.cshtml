@@ -1,57 +1,30 @@
-﻿@model IEnumerable<DefibrilatorProject.Models.Models.SoldProduct>
+﻿@using GridMvc.Html
+@model IEnumerable<DefibrilatorProject.Models.Models.SoldProduct>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index Of Sold Products";
 }
 
-<h2>Index</h2>
+<h2>Index Of Sold Products</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Product)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Company)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoldDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StopMaintenance)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoldDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StopMaintenance)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { soldProductId=item.SoldProductId }) |
-            @Html.ActionLink("Maintenance History", "Index", "Maintenance", new { @productId = @item.ProductId, @companyId = @item.CompanyId }, null) |
-            @Html.ActionLink("Delete", "Delete", new { soldProductId = item.SoldProductId })
-        </td>
-    </tr>
+@if(Model != null)
+{
+    @Html.Grid(Model).Columns(columns =>
+    {
+            columns.Add(c => c.Product.Name).Titled("Product");
+            columns.Add(c => c.Company.Name).Titled("Company");
+            columns.Add(c => c.Location).Titled("Location");
+            columns.Add(c => c.SoldDate).Titled("SoldDate");
+            columns.Add(c => c.StopMaintenance).Titled("StopMaintenance");
+            columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { SoldProductId = o.SoldProductId }, null).ToHtmlString());
+            columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Maintenance History", "Index", new { ProductId = o.ProductId, CompanyId = o.CompanyId }, null).ToHtmlString());
+    }).WithPaging(10).Sortable(true)
+}
+else
+{
+    <div>No Products To Display</div>
 }
 
-</table>

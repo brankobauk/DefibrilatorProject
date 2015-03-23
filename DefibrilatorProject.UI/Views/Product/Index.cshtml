@@ -1,44 +1,20 @@
-﻿@model IEnumerable<DefibrilatorProject.Models.Models.Product>
+﻿@using GridMvc.Html
+@model IEnumerable<DefibrilatorProject.Models.Models.Product>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+<h2>Index Of Products</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Product", "Create")
 </p>
-@if (Model != null)
+@if (Model != null) { 
+    
+@Html.Grid(Model).Columns(columns =>
 {
-    <table>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th></th>
-        </tr>
+    columns.Add(c => c.Name).Titled("Name");
+    columns.Add(c => c.Model).Titled("Model");
+    columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { ProductId = o.ProductId }, null).ToHtmlString());
+}).WithPaging(10).Sortable(true)
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Model)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new {productId = item.ProductId}) |
-                    @Html.ActionLink("Delete", "Delete", new {ProductId = item.ProductId})
-                </td>
-            </tr>
-        }
-
-    </table>
 }
 else
 {

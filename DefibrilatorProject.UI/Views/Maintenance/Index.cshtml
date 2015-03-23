@@ -2,9 +2,6 @@
 @using GridMvc.Html
 @model DefibrilatorProject.Models.ViewModels.MaintenanceViewModel
 
-@{
-    ViewBag.Title = "Index";
-}
 @helper CustomRenderingOfColumn(bool stopMaintenance, DateTime date, int serviceRate)
 {
     if (stopMaintenance)
@@ -16,10 +13,10 @@
         @date.AddMonths(serviceRate).ToShortDateString();
     }
 }
-<h2>Index</h2>
+<h2>Index Of Maintenance Items</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Maintenance Item", "Create")
 </p>
 @Html.DropDownListFor(x => x.CompanyId, Model.Companies)
 @Html.DropDownListFor(x => x.ProductId, Model.Products)

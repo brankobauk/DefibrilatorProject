@@ -1,59 +1,35 @@
-﻿@model IEnumerable<DefibrilatorProject.Models.Models.Maintenance>
-<h2>Items to Service</h2>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SoldProduct.Company)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoldProduct.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoldProduct)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductProperty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfMainenance)
-        </th>
-        <th>
-            NextMaintenanceOn
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
+﻿@using GridMvc.Html
+@model IEnumerable<DefibrilatorProject.Models.Models.Maintenance>
+@helper CustomRenderingOfColumn(bool stopMaintenance, DateTime date, int serviceRate)
+{
+    if (stopMaintenance)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldProduct.Company.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldProduct.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldProduct.Product.Name)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductProperty.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfMainenance)
-            </td>
-            <td>
-                @if (item.ProductProperty.StopMaintenance == true)
-                {
-                    @:Never
-                }
-                else
-                {
-                    @item.DateOfMainenance.AddMonths(item.ProductProperty.ServiceRate).ToShortDateString();
-                }
-            </td>
-        </tr>
+        @:Never
     }
-</table>
+    else
+    {
+        @date.AddMonths(serviceRate).ToShortDateString();
+    }
+}
+<h2>Items to Service</h2>
+
+@if (Model != null)
+{
+    @Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(c => c.SoldProduct.Company.Name).Titled("Company");
+        columns.Add(c => c.SoldProduct.Location).Titled("Location");
+        columns.Add(c => c.SoldProduct.Product.Name).Titled("Product");
+        columns.Add(c => c.ProductProperty.Name).Titled("ProductProperty");
+        columns.Add(c => c.DateOfMainenance).Titled("DateOfMainenance");
+        columns.Add(c => c.ProductProperty.StopMaintenance).Titled("NextMaintenanceOn").RenderValueAs(o => CustomRenderingOfColumn(o.ProductProperty.StopMaintenance, o.DateOfMainenance, o.ProductProperty.ServiceRate)).Filterable(true);
+    }).WithPaging(10).Sortable(true)
+}
+else
+{
+   <div>The List Is Empty!</div>
+}
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/maintenance")

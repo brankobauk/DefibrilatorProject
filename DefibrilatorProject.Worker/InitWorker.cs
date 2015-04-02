@@ -26,7 +26,7 @@ namespace DefibrilatorProject.Worker
 
             var keepAliveJob = JobBuilder.Create<KeepAliveJob>().Build();
             var keepAliveTrigger = TriggerBuilder.Create()
-                .WithSimpleSchedule(x => x.WithIntervalInMinutes(19).RepeatForever())
+                .WithSimpleSchedule(x => x.WithIntervalInMinutes(5).RepeatForever())
                 .Build();
 
             scheduler.ScheduleJob(keepAliveJob, keepAliveTrigger);

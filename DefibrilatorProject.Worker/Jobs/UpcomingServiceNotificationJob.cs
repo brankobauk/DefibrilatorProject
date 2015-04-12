@@ -16,5 +16,11 @@ namespace DefibrilatorProject.Worker.Jobs
         {
             _workerHandler.StartUpcomingServiceNotification();
         }
+
+        public void Start()
+        {
+            _workerHandler.StartUpcomingServiceNotification();
+            //var sfc = 1;
+        }
     }
 }
